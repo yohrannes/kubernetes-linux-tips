@@ -1,0 +1,37 @@
+kubectl get
+kubectl get pods -n
+kubectl get pods -A # pega todos 
+kubectl get pods -n kube-system -o wide # pega os do kube system
+
+kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl get replicaset
+kubectl get deploy
+
+#abreviados...
+
+kubectl get po #pods...
+kubectl get svc #services..,.
+
+#como fazer autocompletion......
+apt install bach-completion
+
+ Detailed instructions on how to do this are available here:
+
+        for macOS:
+        https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/#enable-shell-autocompletion  
+
+        for linux:
+        https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#enable-shell-autocompletion  
+
+        for windows:
+        https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#enable-shell-autocompletion
+
+
+kubectl run --image nginx --port 80 giropops
+kubectl exec -ti giropops -- bash # logar no servidor....
+kubectl delete pod
+
+##colocar no bash profile
+alias k=kubectl

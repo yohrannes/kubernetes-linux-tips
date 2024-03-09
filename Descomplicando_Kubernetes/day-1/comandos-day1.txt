@@ -8,6 +8,9 @@ kubectl get pods
 kubectl get services
 kubectl get replicaset
 kubectl get deploy
+kubectl get all
+kubectl get pod,service
+kubectl get pod,svc
 
 #abreviados...
 
@@ -32,3 +35,9 @@ kubectl expose pods giropops --type NodePort # Faz uma porta do Node escutar a p
 
 kubectl delete pod
 
+kubectl run --image nginx --port 80 giropops --dry-run=client -o yaml # Finge que cria, mas não criar, e mostra a saida em YAML
+
+
+## Tarefa para pessoa diretora X
+-- Criar um cluster kind com um control plane e 3 workers
+-- Fazer deploy do pod no /root/meu-primeiro-cluster.yaml

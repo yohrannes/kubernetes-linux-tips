@@ -15,23 +15,20 @@ kubectl get po #pods...
 kubectl get svc #services..,.
 
 #como fazer autocompletion......
-apt install bach-completion
+apt install bash-completion
 
- Detailed instructions on how to do this are available here:
-
-        for macOS:
-        https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/#enable-shell-autocompletion  
-
-        for linux:
-        https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#enable-shell-autocompletion  
-
-        for windows:
-        https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#enable-shell-autocompletion
-
-
-kubectl run --image nginx --port 80 giropops
-kubectl exec -ti giropops -- bash # logar no servidor....
-kubectl delete pod
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#enable-shell-autocompletion 
 
 ##colocar no bash profile
-alias k=kubectl
+alias k="kubectl"
+
+ 
+
+kubectl run --image nginx --port 80 giropops
+kubectl exec -ti <nome-do-pod> -- bash # logar no servidor....
+
+kubectl expose pods giropops # Criando um serviço
+kubectl expose pods giropops --type NodePort # Faz uma porta do Node escutar a porta do pod
+
+kubectl delete pod
+

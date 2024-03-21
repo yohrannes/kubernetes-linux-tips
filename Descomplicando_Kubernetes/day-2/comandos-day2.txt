@@ -12,3 +12,11 @@ k get pods -o wide
 k get pods -L run
 k delete po giropops
 k run strigus --image nginx --port 80
+k get run --help
+
+## Rodando em modo de terminal
+k run -ti girus --image busybox
+
+## Duas maneiras de acessar um pods
+
+k attach

@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: meu-site
+    service: application
+  name: meu-site
+spec:
+  containers:
+  - image: yohrannes/website-portifolio
+    name: meu-site
+    volumeMounts:
+    - mountPath: /jamaica
+      name: "mount-na-jamaica"
+    ports:
+    - containerPort: 5000
+    resources:
+      limits:
+        cpu: "1.5"
+        memory: "128Mi"
+      requests:
+        cpu: "0.2"
+        memory: "64Mi"
+  - image: nginx
+    name: nginx
+    volumeMounts:
+     - mountPath: /jamaica
+       name: "mount-na-jamaica"
+    resources:
+      limits:
+        cpu: "1.5"
+        memory: "128Mi"
+      requests:
+        cpu: "0.2"
+        memory: "64Mi"
+    ports:
+    - containerPort: 80
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: mount-na-jamaica
+    emptyDir:
+      sizeLimit: 256Mi

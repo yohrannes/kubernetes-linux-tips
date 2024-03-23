@@ -38,3 +38,11 @@ k apply -f pod.yaml ## -->> Crias as configurações caso ainda não estejam cri
 The Pod "girus" is invalid: spec.containers: Forbidden: pod updates may not add or remove containers
 
 ## Isso informa que não tem como adicionar container com o apply, precisa deletar e depois criar novamente.
+
+k get po -w ## -w significa watch para ficar assistindo o resultado deste comando
+
+## Verificar os logs dos pods
+
+k describe pods <nomedopod>
+k get logs <nomedopod>
+k get logs <nomedopod> -c <nomedocontainer>

@@ -18,10 +18,12 @@ k get run --help
 k run -ti girus --image busybox
 
 ## Duas maneiras de acessar um pods
+
 # 1 - Irá adentrar no estado atual do container
 k attach <nome-do-pod> -c <nome-do-container> -it
+
 # 2 - Irá executar o bash dentro do container (no caso se acabar atachando em outro processo)
-k exec -it strigus -- bash
+k exec strigus -it -- bash
 
 ## ps -ef ## -->> Verificar processos em execução
 ## cd /proc/ -->> pastas com cada processo em execução (para verificar qual processo é cat /proc/<munero-do-processo>/cmdline)
@@ -44,5 +46,33 @@ k get po -w ## -w significa watch para ficar assistindo o resultado deste comand
 ## Verificar os logs dos pods
 
 k describe pods <nomedopod>
-k get logs <nomedopod>
-k get logs <nomedopod> -c <nomedocontainer>
+k logs <nomedopod>
+k logs <nomedopod> -c <nomedocontainer>
+
+
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+  - image: busybox
+    name: busybox
+    args: 
+    - sleep ## -->> Rodando o comando sleep ao terminar de criar o container do busybox
+    - "600" ## -->> Colocando 600 segudos para o sleep
+
+
+spec:
+  containers:
+  - image: ubuntu
+    name: ubuntu
+    args:
+    - sleep
+    - "1800"
+    resources:
+      limits: ## -->> Limitando recursos
+        cpu: "1.5"
+        memory: "128Mi"
+      requests: ## -->> Estipulando recurso inicial, iniciará com x de recurso
+        cpu: "0.3"
+        memory: "64Mi"

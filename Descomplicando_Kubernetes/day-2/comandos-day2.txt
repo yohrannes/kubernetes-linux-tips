@@ -18,5 +18,23 @@ k get run --help
 k run -ti girus --image busybox
 
 ## Duas maneiras de acessar um pods
+# 1 - Irá adentrar no estado atual do container
+k attach <nome-do-pod> -c <nome-do-container> -it
+# 2 - Irá executar o bash dentro do container (no caso se acabar atachando em outro processo)
+k exec -it strigus -- bash
 
-k attach
+## ps -ef ## -->> Verificar processos em execução
+## cd /proc/ -->> pastas com cada processo em execução (para verificar qual processo é cat /proc/<munero-do-processo>/cmdline)
+
+k run girus-1 --image alpine --dru-run=client
+k run girus-1 --image alpine --dru-run=client -o yaml >> pod.yaml
+k apply -f pod.yaml ## -->> Aplica as configurações mesmo que já esteja criado
+## -f é filename....
+k apply -f pod.yaml ## -->> Crias as configurações caso ainda não estejam criadas
+
+
+## Ao tentar adicionar um container novo no pod.yaml e aplicá-lo mostra o seguinte erro
+
+The Pod "girus" is invalid: spec.containers: Forbidden: pod updates may not add or remove containers
+
+## Isso informa que não tem como adicionar container com o apply, precisa deletar e depois criar novamente.

@@ -49,6 +49,8 @@ k describe pods <nomedopod>
 k logs <nomedopod>
 k logs <nomedopod> -c <nomedocontainer>
 
+kubectl logs -f giropops ## -->> Verificar logs do pod em tempo real
+
 
 spec:
   containers:

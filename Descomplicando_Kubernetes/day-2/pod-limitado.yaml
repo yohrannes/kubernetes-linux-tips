@@ -10,7 +10,7 @@ spec:
     name: ubuntu
     args:
     - sleep
-    - "1800"
+    - "1800" # Ou - infinity
     resources:
       limits:
         cpu: "1.5"
